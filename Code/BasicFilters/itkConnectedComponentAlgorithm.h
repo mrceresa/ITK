@@ -1,10 +1,10 @@
 /*=========================================================================
 
   Program:   Insight Segmentation & Registration Toolkit
-  Module:    itkConnectedComponentAlgorithm.h
+  Module:    $RCSfile: itkConnectedComponentAlgorithm.h,v $
   Language:  C++
-  Date:      $Date$
-  Version:   $Revision$
+  Date:      $Date: 2006/12/14 10:27:37 $
+  Version:   $Revision: 1.2 $
 
   Copyright (c) Insight Software Consortium. All rights reserved.
   See ITKCopyright.txt or http://www.itk.org/HTML/Copyright.htm for details.
@@ -76,6 +76,8 @@ setConnectivityPrevious( TIterator* it, bool fullyConnected=false )
       {
       offset[d] = -1;
       it->ActivateOffset( offset );
+//       offset[d] = 1;
+//       it->ActivateOffset( offset );
       offset[d] = 0;
       }
     }
@@ -109,9 +111,9 @@ setConnectivityLater( TIterator* it, bool fullyConnected=false )
     offset.Fill( 0 );
     for( unsigned int d=0; d < TIterator::Dimension; ++d )
       {
-      offset[d] = 1;
-      it->ActivateOffset( offset );
-      offset[d] = 0;
+       offset[d] = 1;
+       it->ActivateOffset( offset );
+       offset[d] = 0;
       }
     }
   else
