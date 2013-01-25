@@ -615,7 +615,7 @@ BSplineScatteredDataPointSetToImageFilter<TInputPointSet, TOutputImage>
         this->m_CurrentNumberOfControlPoints[i] - this->m_SplineOrder[i];
 
       p[i] = ( point[i] - this->m_Origin[i] ) * r[i];
-      if( vnl_math_abs( p[i] - static_cast<RealType>( totalNumberOfSpans ) ) <=
+      if( vnl_math::abs( p[i] - static_cast<RealType>( totalNumberOfSpans ) ) <=
         this->m_BSplineEpsilon )
         {
         p[i] = static_cast<RealType>( totalNumberOfSpans )
@@ -760,7 +760,7 @@ BSplineScatteredDataPointSetToImageFilter<TInputPointSet, TOutputImage>
       U[i] = static_cast<RealType>( totalNumberOfSpans[i] ) *
         static_cast<RealType>( idx[i] - startIndex[i] ) /
         static_cast<RealType>( this->m_Size[i] - 1 );
-      if( vnl_math_abs( U[i] - static_cast<RealType>( totalNumberOfSpans[i] ) )
+      if( vnl_math::abs( U[i] - static_cast<RealType>( totalNumberOfSpans[i] ) )
         <= this->m_BSplineEpsilon )
         {
         U[i] = static_cast<RealType>( totalNumberOfSpans[i] ) -
@@ -866,7 +866,7 @@ BSplineScatteredDataPointSetToImageFilter<TInputPointSet, TOutputImage>
         P = ItD.Get() / ItO.Get();
         for( unsigned int i = 0; i < P.Size(); i++ )
           {
-          if( vnl_math_isnan( P[i] ) || vnl_math_isinf( P[i] ) )
+          if( vnl_math::isnan( P[i] ) || vnl_math::isinf( P[i] ) )
             {
             P[i] = 0;
             }
@@ -1094,7 +1094,7 @@ BSplineScatteredDataPointSetToImageFilter<TInputPointSet, TOutputImage>
       U[i] = static_cast<RealType>( totalNumberOfSpans[i] ) *
         static_cast<RealType>( point[i] - this->m_Origin[i] ) /
         ( static_cast<RealType>( this->m_Size[i] - 1 ) * this->m_Spacing[i] );
-      if( vnl_math_abs( U[i] - static_cast<RealType>( totalNumberOfSpans[i] ) )
+      if( vnl_math::abs( U[i] - static_cast<RealType>( totalNumberOfSpans[i] ) )
         <= this->m_BSplineEpsilon )
         {
         U[i] = static_cast<RealType>( totalNumberOfSpans[i] ) -

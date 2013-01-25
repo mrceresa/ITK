@@ -225,7 +225,7 @@ typename RingBuffer< TElement >::OffsetValueType
 RingBuffer< TElement >
 ::GetOffsetBufferIndex(OffsetValueType offset)
 {
-  OffsetValueType moddedOffset = vnl_math_abs(offset) % this->GetNumberOfBuffers();
+  OffsetValueType moddedOffset = vnl_math::abs(offset) % this->GetNumberOfBuffers();
   OffsetValueType signedHeadIndex = static_cast<OffsetValueType>(m_HeadIndex);
   if (offset >= 0)
     {

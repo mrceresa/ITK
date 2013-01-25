@@ -148,8 +148,8 @@ void
 Similarity2DTransform<TScalarType>
 ::ComputeMatrixParameters(void)
 {
-  m_Scale = vcl_sqrt( vnl_math_sqr(this->GetMatrix()[0][0])
-                      + vnl_math_sqr(this->GetMatrix()[0][1]) );
+  m_Scale = vcl_sqrt( vnl_math::sqr(this->GetMatrix()[0][0])
+                      + vnl_math::sqr(this->GetMatrix()[0][1]) );
 
   this->SetVarAngle( vcl_acos(this->GetMatrix()[0][0] / m_Scale) );
 

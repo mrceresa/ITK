@@ -84,7 +84,7 @@ private:
   /** Zeroth order spline. */
   inline TRealValueType Evaluate(const Dispatch< 0 > &, const TRealValueType & u) const
   {
-    const TRealValueType absValue = vnl_math_abs(u);
+    const TRealValueType absValue = vnl_math::abs(u);
     if ( absValue  < static_cast< TRealValueType >(0.5) )
       {
       return NumericTraits< TRealValueType >::One;
@@ -102,7 +102,7 @@ private:
   /** First order spline */
   inline TRealValueType Evaluate(const Dispatch< 1 > &, const TRealValueType & u) const
   {
-    const TRealValueType absValue = vnl_math_abs(u);
+    const TRealValueType absValue = vnl_math::abs(u);
     if ( absValue  < NumericTraits< TRealValueType >::One )
       {
       return NumericTraits< TRealValueType >::One - absValue;
@@ -116,15 +116,15 @@ private:
   /** Second order spline. */
   inline TRealValueType Evaluate(const Dispatch< 2 > &, const TRealValueType & u) const
   {
-    const TRealValueType absValue = vnl_math_abs(u);
+    const TRealValueType absValue = vnl_math::abs(u);
     if ( absValue  < static_cast< TRealValueType >(0.5) )
       {
-      const TRealValueType sqrValue = vnl_math_sqr(absValue);
+      const TRealValueType sqrValue = vnl_math::sqr(absValue);
       return static_cast< TRealValueType >(0.75) - sqrValue;
       }
     else if ( absValue < static_cast< TRealValueType >(1.5) )
       {
-      const TRealValueType sqrValue = vnl_math_sqr(absValue);
+      const TRealValueType sqrValue = vnl_math::sqr(absValue);
       // NOTE: 1.0/8.0 == static_cast< TRealValueType >( 0.125 )
       return ( static_cast< TRealValueType >(9.0) - static_cast< TRealValueType >(12.0) * absValue
         + static_cast< TRealValueType >(4.0) * sqrValue ) * static_cast< TRealValueType >(0.125);
@@ -138,16 +138,16 @@ private:
   /**  Third order spline. */
   inline TRealValueType Evaluate(const Dispatch< 3 > &, const TRealValueType & u) const
   {
-    const TRealValueType absValue = vnl_math_abs(u);
+    const TRealValueType absValue = vnl_math::abs(u);
     if ( absValue  < NumericTraits< TRealValueType >::One )
       {
-      const TRealValueType sqrValue = vnl_math_sqr(absValue);
+      const TRealValueType sqrValue = vnl_math::sqr(absValue);
       return ( static_cast< TRealValueType >(4.0) - static_cast< TRealValueType >(6.0) * sqrValue
         + static_cast< TRealValueType >(3.0) * sqrValue * absValue ) / static_cast< TRealValueType >(6.0);
       }
     else if ( absValue < static_cast< TRealValueType >(2.0) )
       {
-      const TRealValueType sqrValue = vnl_math_sqr(absValue);
+      const TRealValueType sqrValue = vnl_math::sqr(absValue);
       return ( static_cast< TRealValueType >(8.0) - static_cast< TRealValueType >(12.0) * absValue + static_cast< TRealValueType >(6.0) * sqrValue
                - sqrValue * absValue ) / static_cast< TRealValueType >(6.0);
       }

@@ -336,7 +336,7 @@ const
           }
         jacobian(col, row) = val;
         // Verify it's a real number
-        if( !vnl_math_isfinite( val) )
+        if( !vnl_math::isfinite( val) )
           {
           oktosample = false;
           break;
